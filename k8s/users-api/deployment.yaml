@@ -1,10 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     app: microservice-app-example
   name: users-api
 spec:
+  selector:
+    matchLabels:
+      app: microservice-app-example
+      service: users-api
   replicas: 1
   template:
     metadata:
