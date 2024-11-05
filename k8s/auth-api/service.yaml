@@ -6,6 +6,10 @@ metadata:
   name: auth-api
 spec:
   ports:
-  - port: 8081
+    - name: todo-service
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+
   selector:
     service: auth-api
