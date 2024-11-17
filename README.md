@@ -28,7 +28,7 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 
 ```bash
 # setting c_group
-sudo nano /boot/cmdline.txt
+sudo nano /boot/firmware/cmdline.txt
 
 #add this then reboot
 cgroup_memory=1 cgroup_enable=memory
