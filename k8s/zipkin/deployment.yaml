@@ -17,7 +17,7 @@ spec:
         service: zipkin
     spec:
       containers:
-      - image: openzipkin/zipkin
+      - image: localhost:5000/zipkin
         name: zipkin
         ports:
         - containerPort: 9411

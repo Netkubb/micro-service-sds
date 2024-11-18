@@ -9,7 +9,12 @@ spec:
     matchLabels:
       app: microservice-app-example
       service: todos-api
-  replicas: 1
+  replicas: 4
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -33,6 +38,18 @@ spec:
           
         image: localhost:5000/todos-api
         name: todos-api
+        livenessProbe:
+          httpGet:
+            path: /non-existent-path
+            port: 8082
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /non-existent-path
+            port: 8082
+          initialDelaySeconds: 5
+          periodSeconds: 10
         ports:
         - containerPort: 8082
       restartPolicy: Always
